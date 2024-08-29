@@ -392,6 +392,23 @@ Marker Style: You can customize the marker style using fig.update_traces(marker=
 Legend: Customize the legend using fig.update_layout(legend=dict(...)).
 Annotations: Add annotations using fig.add_annotation(...).
 Here’s an example of adding marker style and annotations:
+
+
+
+In this example:
+
+df is the DataFrame containing the data.
+x_var is set to ‘GDP’.
+y_var is set to ‘Life Expectancy’.
+color_var is set to ‘Country’.
+size_var is set to ‘Population’.
+hover_data includes ‘Country’.
+title is ‘GDP vs Life Expectancy’.
+x_label is ‘GDP (in billions)’.
+y_label is ‘Life Expectancy (years)’.
+theme is ‘plotly’.
+This will create a scatter plot with GDP on the x-axis, Life Expectancy on the y-axis, different colors for each country, and bubble sizes representing the population. Let me know if you need any further adjustme
+
 '''
 import plotly.express as px
 
