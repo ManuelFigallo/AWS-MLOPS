@@ -112,7 +112,7 @@ def keep_columns_with_prefixes(df, prefixes):
     return df[columns_to_keep]
 
 # List of prefixes
-prefixes = ['SDOH', 'MM', 'HCOSTS', 'HUTIL']
+# prefixes = ['SDOH', 'MM', 'HCOSTS', 'HUTIL']
 
 
 """
