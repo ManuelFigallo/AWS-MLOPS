@@ -26,11 +26,6 @@ def remove_characters(df, column, chars_to_remove):
     return df
 
 
-
-
-
-
-
 """
     NAME: TBD
     PURPOSE: TBD.
@@ -128,6 +123,26 @@ def plot_correlation_matrix(df):
     sns.heatmap(corr_matrix, annot=True, cmap='coolwarm', linewidths=0.5)
     plt.title('Correlation Matrix')
     plt.show()
+
+
+
+"""
+    NAME: TBD
+    PURPOSE: TBD.
+
+    INPUT PARAMETERS:
+    TBD
+ 
+    OUTPUT/RETURNS:
+    TBD
+"""
+'''
+Python function that produces a correlation matrix:
+'''
+
+
+
+
 
 
 
