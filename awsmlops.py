@@ -367,6 +367,59 @@ def plot_correlation_matrix5(df, method='pearson'):
 
 
 
+
+
+
+
+"""
+    NAME: TBD
+    PURPOSE: TBD.
+
+    INPUT PARAMETERS:
+    TBD
+ 
+    OUTPUT/RETURNS:
+    TBD
+"""
+'''
+Explanation:
+title: The title of the plot.
+x_label: The label for the x-axis.
+y_label: The label for the y-axis.
+theme: The theme for the plot (e.g., ‘plotly’, ‘ggplot2’, ‘seaborn’, etc.).
+Additional Customizations:
+Marker Style: You can customize the marker style using fig.update_traces(marker=dict(...)).
+Legend: Customize the legend using fig.update_layout(legend=dict(...)).
+Annotations: Add annotations using fig.add_annotation(...).
+Here’s an example of adding marker style and annotations:
+'''
+import plotly.express as px
+
+def create_custom_scatter_plot(df, x_var, y_var, color_var, size_var, hover_data, title, x_label, y_label, theme='plotly'):
+    fig = px.scatter(df, x=x_var, y=y_var, color=color_var, size=size_var, hover_data=hover_data)
+
+    # Customizing the plot
+    fig.update_layout(
+        title=title,
+        xaxis_title=x_label,
+        yaxis_title=y_label,
+        template=theme
+    )
+
+    fig.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
 """
     NAME: TBD
     PURPOSE: TBD.
