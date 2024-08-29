@@ -26,6 +26,34 @@ def remove_characters(df, column, chars_to_remove):
     return df
 
 
+
+
+
+
+
+
+"""
+    NAME: TBD
+    PURPOSE: TBD.
+
+    INPUT PARAMETERS:
+    TBD
+ 
+    OUTPUT/RETURNS:
+    TBD
+"""
+import subprocess
+import sys
+
+def uninstall_package(package_name):
+    subprocess.check_call([sys.executable, "-m", "pip", "uninstall", package_name, "-y"])
+
+
+
+
+
+
+
 """
     NAME: TBD
     PURPOSE: TBD.
