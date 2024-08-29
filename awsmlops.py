@@ -139,8 +139,200 @@ def plot_correlation_matrix(df):
 '''
 Python function that produces a correlation matrix:
 '''
+import plotly.express as px
+import pandas as pd
+
+def plot_correlation_matrix2(df):
+    # Calculate the correlation matrix
+    corr_matrix = df.corr()
+
+    # Create the heatmap with tooltips
+    fig = px.imshow(corr_matrix,
+                    text_auto=True,
+                    aspect="auto",
+                    labels=dict(color="Correlation"),
+                    color_continuous_scale='Blues',  # Blue gradient
+                    zmin=-1, zmax=1)
+
+    # Update layout for better readability
+    fig.update_layout(title='Correlation Matrix',
+                      xaxis_title='Features',
+                      yaxis_title='Features')
+
+    # Show the plot
+    fig.show()
 
 
+
+
+
+
+"""
+    NAME: TBD
+    PURPOSE: TBD.
+
+    INPUT PARAMETERS:
+    TBD
+ 
+    OUTPUT/RETURNS:
+    TBD
+"""
+'''
+This function now masks the upper triangle of the correlation matrix, displaying only the lower triangle
+'''
+import plotly.express as px
+import pandas as pd
+import numpy as np
+
+def plot_correlation_matrix3(df):
+    # Calculate the correlation matrix
+    corr_matrix = df.corr()
+
+    # Generate a mask for the upper triangle
+    mask = np.triu(np.ones_like(corr_matrix, dtype=bool))
+
+    # Apply the mask to the correlation matrix
+    corr_matrix = corr_matrix.mask(mask)
+
+    # Create the heatmap with tooltips
+    fig = px.imshow(corr_matrix,
+                    text_auto=True,
+                    aspect="auto",
+                    labels=dict(color="Correlation"),
+                    color_continuous_scale='Blues',  # Blue gradient
+                    zmin=-1, zmax=1)
+
+    # Update layout for better readability
+    fig.update_layout(title='Correlation Matrix',
+                      xaxis_title='Features',
+                      yaxis_title='Features')
+
+    # Show the plot
+    fig.show()
+
+
+
+
+
+"""
+    NAME: TBD
+    PURPOSE: TBD.
+
+    INPUT PARAMETERS:
+    TBD
+ 
+    OUTPUT/RETURNS:
+    TBD
+"""
+'''
+To remove the redundant squares and only show the lower triangle of the correlation matrix, 
+you can use the mask to hide the upper triangle and set the diagonal to NaN to avoid showing
+ the correlation of variables with themselves. Here’s the updated function:
+'''
+import plotly.express as px
+import pandas as pd
+import numpy as np
+
+def plot_correlation_matrix4(df):
+    # Calculate the correlation matrix
+    corr_matrix = df.corr()
+
+    # Generate a mask for the upper triangle
+    mask = np.triu(np.ones_like(corr_matrix, dtype=bool))
+
+    # Apply the mask to the correlation matrix and set the diagonal to NaN
+    corr_matrix = corr_matrix.mask(mask)
+    np.fill_diagonal(corr_matrix.values, np.nan)
+
+    # Remove redundant squares by setting the upper triangle to NaN
+    corr_matrix = corr_matrix.where(~mask)
+
+    # Create the heatmap with tooltips
+    fig = px.imshow(corr_matrix,
+                    text_auto=True,
+                    aspect="auto",
+                    labels=dict(color="Correlation"),
+                    color_continuous_scale='Blues',  # Blue gradient
+                    zmin=-1, zmax=1)
+
+    # Update layout for better readability
+    fig.update_layout(title='Correlation Matrix',
+                      xaxis_title='Features',
+                      yaxis_title='Features')
+
+    # Show the plot
+    fig.show()
+
+
+
+
+
+
+"""
+    NAME: TBD
+    PURPOSE: TBD.
+
+    INPUT PARAMETERS:
+    TBD
+ 
+    OUTPUT/RETURNS:
+    TBD
+"""
+'''
+Both Spearman and Pearson correlations are used to measure the strength and direction of the relationship between two variables, but they differ in their approach and the type of data they handle.
+
+Pearson Correlation
+Type of Data: It measures the linear relationship between two continuous variables.
+Assumptions: Assumes that the data is normally distributed and the relationship between the variables is linear.
+Calculation: Uses the actual data values.
+Sensitivity: Sensitive to outliers, which can significantly affect the correlation coefficient.
+Spearman Correlation
+Type of Data: It measures the monotonic relationship between two variables, which can be ordinal, interval, or ratio.
+Assumptions: Does not assume a normal distribution and can handle non-linear relationships.
+Calculation: Uses the rank of the data values rather than the actual data values.
+Sensitivity: Less sensitive to outliers compared to Pearson correlation.
+In summary, use Pearson correlation when you expect a linear relationship and your data is normally distributed. Opt for Spearman correlation when dealing with ordinal data or when the relationship is not necessarily linear1
+'''
+import plotly.express as px
+import pandas as pd
+import numpy as np
+
+def plot_correlation_matrix5(df, method='pearson'):
+    """
+    Plots a correlation matrix with an option to choose between Pearson and Spearman correlations.
+
+    Parameters:
+    df (pd.DataFrame): The input dataframe.
+    method (str): The correlation method, either 'pearson' or 'spearman'. Default is 'pearson'.
+    """
+    # Calculate the correlation matrix
+    corr_matrix = df.corr(method=method)
+
+    # Generate a mask for the upper triangle
+    mask = np.triu(np.ones_like(corr_matrix, dtype=bool))
+
+    # Apply the mask to the correlation matrix and set the diagonal to NaN
+    corr_matrix = corr_matrix.mask(mask)
+    np.fill_diagonal(corr_matrix.values, np.nan)
+
+    # Remove redundant squares by setting the upper triangle to NaN
+    corr_matrix = corr_matrix.where(~mask)
+
+    # Create the heatmap with tooltips
+    fig = px.imshow(corr_matrix,
+                    text_auto=True,
+                    aspect="auto",
+                    labels=dict(color="Correlation"),
+                    color_continuous_scale='Blues',  # Blue gradient
+                    zmin=-1, zmax=1)
+
+    # Update layout for better readability
+    fig.update_layout(title=f'Correlation Matrix ({method.capitalize()} Correlation)',
+                      xaxis_title='Features',
+                      yaxis_title='Features')
+
+    # Show the plot
+    fig.show()
 
 
 
