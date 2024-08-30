@@ -142,7 +142,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-def plot_correlation_matrix(df):
+def plot_correlation_matrix1(df):
     # Calculate the correlation matrix
     corr_matrix = df.corr()
 
@@ -325,7 +325,7 @@ import plotly.express as px
 import pandas as pd
 import numpy as np
 
-def plot_correlation_matrix5(df, method='pearson'):
+def plot_correlation_matrix(df, method='pearson'):
     """
     Plots a correlation matrix with an option to choose between Pearson and Spearman correlations.
 
